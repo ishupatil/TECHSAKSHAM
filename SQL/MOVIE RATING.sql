@@ -1,0 +1,29 @@
+CREATE DATABASE PRACTICE;
+CREATE SCHEMA ASSIGNMENT_SCHEMA;
+CREATE TABLE IF NOT EXISTS ASSIGNMENT_SCHEMA.MOVIE_RATINGS(
+TICKET_ID INT PRIMARY KEY,
+MOVIE_NAME VARCHAR(50) NOT NULL,
+THEATER_NAME VARCHAR(30),
+RATINGS DECIMAL (10,2) CHECK (RATINGS >0 AND RATINGS<=10),
+MOVIE_TIME TIME
+
+);
+INSERT INTO ASSIGNMENT_SCHEMA.MOVIE_RATINGS (TICKET_ID, MOVIE_NAME, THEATER_NAME, RATINGS, MOVIE_TIME)
+VALUES 
+    (1, 'Inception', 'AMC Empire 25', 8.75, '12:30:00'),
+    (2, 'The Matrix', 'Regal Cinemas', 9.00, '14:15:00'),
+    (3, 'Interstellar', 'Cinemark 18', 8.50, '16:45:00'),
+    (4, 'Avatar', 'Cineplex Odeon', 7.95, '18:30:00'),
+    (5, 'Titanic', 'Landmark Cinemas', 9.10, '20:00:00');
+    
+    
+    -- 3. Now add a constraint to the table that will prevent the new record from being inserted */
+ALTER TABLE assignment_schema.MOVIE_RATINGS
+ADD CONSTRAINT UNIQUE_MOVIE_NAME UNIQUE (MOVIE_NAME);
+SHOW COLUMNS FROM  assignment_schema.MOVIE_RATINGS;
+
+
+-- 4. Try to insert the record and confirmits insertion has been prevented
+INSERT INTO ASSIGNMENT_SCHEMA.MOVIE_RATINGS (TICKET_ID, MOVIE_NAME, THEATER_NAME, RATINGS, MOVIE_TIME)
+VALUES (7, 'CHAVVA', 'AMC Empire 25', 9.75, '12:30:00');
+SELECT* FROM ASSIGNMENT_SCHEMA.MOVIE_RATINGS;
