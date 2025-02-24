@@ -1,0 +1,6 @@
+# Requirements:
+!pip install numpy  #Installing numpy
+!pip install pandas #Installing pandas
+!pip install mathplot #Installing mathplot
+!pip install seaborne #Installing seaborne
+
